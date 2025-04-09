@@ -87,7 +87,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
             <ArrowLeft size={20} className="mr-1" />
             <Home size={16} />
           </Link>
-          <h1 className="text-2xl font-bold text-gray-800">Panel de Administración</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Admin</h1>
         </div>
         <button
           onClick={onLogout}
@@ -100,7 +100,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
       <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
         <h2 className="text-lg font-semibold mb-4 flex items-center text-primary">
           <Calendar size={20} className="mr-2" />
-          Configuración del Evento
+          Configuración
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -142,7 +142,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
           ) : (
             <Clock size={18} className="mr-2" />
           )}
-          Guardar Configuración
+          Guardar
         </button>
       </div>
 
@@ -154,7 +154,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
           </h2>
           <button
             onClick={openAddModal}
-            className="bg-primary hover:bg-primary/90 text-white p-2 rounded-full transition-colors"
+            className=" hover:bg-primary/90 text-gray-600 p-2 rounded-full transition-colors"
           >
             <Plus size={20} />
           </button>
@@ -204,7 +204,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
       <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
         <h2 className="text-lg font-semibold mb-4 text-primary flex items-center">
           <Users size={20} className="mr-2" />
-          Total de Asistentes: {totalAsistentes}
+          Asistentes: {totalAsistentes}
         </h2>
 
         <button
@@ -217,7 +217,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
           ) : (
             <RefreshCw size={18} className="mr-2" />
           )}
-          Resetear Toda la Información
+          Resetear
         </button>
       </div>
 

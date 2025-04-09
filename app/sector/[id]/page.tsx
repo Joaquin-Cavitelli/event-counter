@@ -12,7 +12,7 @@ export default function SectorPage() {
   const router = useRouter()
   const { sectores, config, registrarAsistentes, loading } = useFirebase()
   const [sector, setSector] = useState<any>(null)
-  const [asistentes, setAsistentes] = useState<number>(0)
+  const [asistentes, setAsistentes] = useState<string>("")  // Inicializamos como cadena vacía
   const [eventDateTime, setEventDateTime] = useState<Date | null>(null)
   const [fechaFormateada, setFechaFormateada] = useState("")
   const [timeRemaining, setTimeRemaining] = useState<{
@@ -29,7 +29,7 @@ export default function SectorPage() {
       const currentSector = sectores.find((s) => s.id === id)
       if (currentSector) {
         setSector(currentSector)
-        setAsistentes(currentSector.asistentes || 0)
+        setAsistentes(currentSector.asistentes || "") // Si no hay asistentes, mantener cadena vacía
       } else {
         router.push("/")
       }
@@ -52,14 +52,12 @@ export default function SectorPage() {
 
   // Second useEffect: Set up timer to update time remaining
   useEffect(() => {
-    // Don't set up timer if no eventDateTime
     if (!eventDateTime) {
       setTimeRemaining(null)
       setEventStarted(false)
       return
     }
 
-    // Initial calculation
     const calculateTimeRemaining = () => {
       const now = new Date()
       const diff = eventDateTime.getTime() - now.getTime()
@@ -78,13 +76,11 @@ export default function SectorPage() {
       }
     }
 
-    // Calculate initial time remaining
     const initialTimeRemaining = calculateTimeRemaining()
     if (initialTimeRemaining) {
       setTimeRemaining(initialTimeRemaining)
     }
 
-    // Set up timer
     const timer = setInterval(() => {
       const remaining = calculateTimeRemaining()
       if (remaining) {
@@ -93,15 +89,14 @@ export default function SectorPage() {
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [eventDateTime]) // Only depend on eventDateTime
+  }, [eventDateTime])
 
   const handleSaveAsistentes = async () => {
     if (!sector) return
 
     setIsSaving(true)
     try {
-      await registrarAsistentes(sector.id, asistentes)
-      // Redirigir al home después de guardar exitosamente
+      await registrarAsistentes(sector.id, Number(asistentes) || 0) // Convertir asistentes a número
       router.push("/")
     } catch (error) {
       console.error("Error al guardar asistentes:", error)
@@ -172,7 +167,7 @@ export default function SectorPage() {
         </div>
       ) : (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
-          <h2 className="text-lg font-semibold mb-4 text-primary">Registrar Asistentes</h2>
+          <h2 className="text-lg font-semibold mb-4 text-primary">Registro</h2>
 
           <div className="mb-4">
             <label htmlFor="asistentes" className="block text-sm font-medium text-gray-700 mb-1">
@@ -182,7 +177,7 @@ export default function SectorPage() {
               type="number"
               id="asistentes"
               value={asistentes}
-              onChange={(e) => setAsistentes(Number.parseInt(e.target.value) || 0)}
+              onChange={(e) => setAsistentes(e.target.value)} // Guardamos el valor como cadena
               min="0"
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             />

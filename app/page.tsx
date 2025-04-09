@@ -58,7 +58,7 @@ export default function Home() {
   return (
     <main className="container mx-auto px-4 py-8 max-w-md">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Contador de Asistentes</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Asistentes</h1>
         <Link
           href="/admin"
           className="bg-white hover:bg-gray-50 text-primary px-4 py-2 rounded-md text-sm font-medium border border-gray-200 shadow-sm flex items-center transition-colors"
@@ -69,13 +69,16 @@ export default function Home() {
       </div>
 
       {eventDateTime ? (
-        <div className="bg-white rounded-lg shadow-md p-4 mb-6 border border-gray-100">
+        <div className="bg-white text-gray-600 rounded-lg shadow-md p-4 mb-6 border border-gray-100">
           <div className="flex items-center gap-2 text-gray-600 mb-2">
             <Clock size={18} className="text-primary" />
             <span>Evento programado para:</span>
           </div>
-          <p className="text-lg font-semibold">
-            {fechaFormateada} a las {config?.hora}
+          <p >
+            {fechaFormateada}
+          </p>
+          <p className="text-xl font-semibold">
+          {config?.hora}hs
           </p>
         </div>
       ) : (
@@ -85,10 +88,10 @@ export default function Home() {
       )}
 
       <div
-        className={`rounded-lg shadow-md p-4 mb-6 border ${todosSectoresContados ? "bg-green-50 border-green-200" : "bg-primary bg-opacity-10 border-primary border-opacity-20"}`}
+        className={`rounded-lg shadow-md  p-4 mb-6 border ${todosSectoresContados ? "bg-green-50 border-green-200" : "bg-white  border-gray-600 border-opacity-20"}`}
       >
         <h2
-          className={`text-xl font-semibold mb-2 flex items-center gap-2 ${todosSectoresContados ? "text-green-600" : "text-primary"}`}
+          className={`text-xl font-semibold mb-2 flex items-center gap-2 ${todosSectoresContados ? "text-green-600" : "text-gray-600"}`}
         >
           <Users size={20} />
           Total de Asistentes: {totalAsistentes}

@@ -25,7 +25,7 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
     }
 
     // Validar credenciales específicas
-    if (username === "admin" && password === "admin123") {
+    if (username === "admin" && password === "jw.org") {
       onLogin({ username, password })
     } else {
       setError("Usuario o contraseña incorrectos")
@@ -80,7 +80,7 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
 
           <button
             type="submit"
-            className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors"
+            className="w-full bg-blue-600  text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors"
           >
             <LogIn size={18} className="mr-2" />
             Ingresar
