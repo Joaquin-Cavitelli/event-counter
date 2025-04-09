@@ -108,7 +108,7 @@ export default function SectorPage() {
   if (loading || !sector) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
       </div>
     )
   }
@@ -116,7 +116,7 @@ export default function SectorPage() {
   return (
     <main className="container mx-auto px-4 py-8 max-w-md">
       <div className="flex items-center mb-6">
-        <Link href="/" className="mr-3 text-primary hover:text-primary/80 transition-colors flex items-center">
+        <Link href="/" className="mr-3 text-blue-600 hover:text-blue-600/80 transition-colors flex items-center">
           <ArrowLeft size={20} className="mr-1" />
           <Home size={16} />
         </Link>
@@ -125,7 +125,7 @@ export default function SectorPage() {
 
       <div className="bg-white rounded-lg shadow-md p-5 mb-6 border border-gray-100">
         <div className="flex items-center text-gray-600 mb-2">
-          <User size={18} className="mr-2 text-primary" />
+          <User size={18} className="mr-2 text-blue-600" />
           <span>Encargado:</span>
         </div>
         <p className="text-lg font-semibold">{sector.encargado}</p>
@@ -137,26 +137,26 @@ export default function SectorPage() {
         </div>
       ) : !eventStarted ? (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
-          <h2 className="text-lg font-semibold mb-4 flex items-center text-primary">
+          <h2 className="text-lg font-semibold mb-4 flex items-center text-blue-600">
             <Clock size={20} className="mr-2" />
             Cuenta regresiva
           </h2>
 
           <div className="grid grid-cols-4 gap-3 text-center">
-            <div className="bg-primary bg-opacity-10 rounded-lg p-3 border border-primary border-opacity-20">
-              <div className="text-2xl font-bold text-primary">{timeRemaining?.days}</div>
+            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
+              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.days}</div>
               <div className="text-xs text-gray-600">Días</div>
             </div>
-            <div className="bg-primary bg-opacity-10 rounded-lg p-3 border border-primary border-opacity-20">
-              <div className="text-2xl font-bold text-primary">{timeRemaining?.hours}</div>
+            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
+              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.hours}</div>
               <div className="text-xs text-gray-600">Horas</div>
             </div>
-            <div className="bg-primary bg-opacity-10 rounded-lg p-3 border border-primary border-opacity-20">
-              <div className="text-2xl font-bold text-primary">{timeRemaining?.minutes}</div>
+            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
+              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.minutes}</div>
               <div className="text-xs text-gray-600">Min</div>
             </div>
-            <div className="bg-primary bg-opacity-10 rounded-lg p-3 border border-primary border-opacity-20">
-              <div className="text-2xl font-bold text-primary">{timeRemaining?.seconds}</div>
+            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
+              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.seconds}</div>
               <div className="text-xs text-gray-600">Seg</div>
             </div>
           </div>
@@ -167,7 +167,7 @@ export default function SectorPage() {
         </div>
       ) : (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
-          <h2 className="text-lg font-semibold mb-4 text-primary">Registro</h2>
+          <h2 className="text-lg font-semibold mb-4 text-blue-600">Registro</h2>
 
           <div className="mb-4">
             <label htmlFor="asistentes" className="block text-sm font-medium text-gray-700 mb-1">
@@ -179,7 +179,7 @@ export default function SectorPage() {
               value={asistentes}
               onChange={(e) => setAsistentes(e.target.value)} // Guardamos el valor como cadena
               min="0"
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
 

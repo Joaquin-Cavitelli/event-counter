@@ -84,7 +84,7 @@ export function SectorModal({ sector, onClose }: SectorModalProps) {
               id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Ej: Sector A"
             />
           </div>
@@ -98,7 +98,7 @@ export function SectorModal({ sector, onClose }: SectorModalProps) {
               id="encargado"
               value={encargado}
               onChange={(e) => setEncargado(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Ej: Juan Pérez"
             />
           </div>
@@ -109,7 +109,7 @@ export function SectorModal({ sector, onClose }: SectorModalProps) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors"
+              className="flex-1 bg-blue-600 hover:bg-blue-600/90 text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors"
             >
               {isSubmitting && (
                 <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2"></div>

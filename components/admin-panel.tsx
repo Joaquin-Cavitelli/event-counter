@@ -83,7 +83,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
-          <Link href="/" className="mr-3 text-primary hover:text-primary/80 transition-colors flex items-center">
+          <Link href="/" className="mr-3 text-blue-600 hover:text-blue-600/80 transition-colors flex items-center">
             <ArrowLeft size={20} className="mr-1" />
             <Home size={16} />
           </Link>
@@ -98,7 +98,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
-        <h2 className="text-lg font-semibold mb-4 flex items-center text-primary">
+        <h2 className="text-lg font-semibold mb-4 flex items-center text-blue-600">
           <Calendar size={20} className="mr-2" />
           Configuración
         </h2>
@@ -113,7 +113,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
               id="fecha"
               value={fecha}
               onChange={handleFechaChange}
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
             {fechaPreview && <p className="text-sm text-gray-500 mt-1">{fechaPreview}</p>}
           </div>
@@ -127,7 +127,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
               id="hora"
               value={hora}
               onChange={(e) => setHora(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
         </div>
@@ -148,13 +148,13 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
 
       <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-lg font-semibold flex items-center text-primary">
+          <h2 className="text-lg font-semibold flex items-center text-blue-600">
             <Users size={20} className="mr-2" />
             Sectores
           </h2>
           <button
             onClick={openAddModal}
-            className=" hover:bg-primary/90 text-gray-600 p-2 rounded-full transition-colors"
+            className=" hover:bg-blue-600/90 text-gray-600 p-2 rounded-full transition-colors"
           >
             <Plus size={20} />
           </button>
@@ -177,7 +177,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
                   <div>
                     <h3 className="font-medium text-gray-800">{sector.nombre}</h3>
                     <div className="flex items-center text-gray-500 text-sm mt-1">
-                      <Users size={14} className="mr-1 text-primary" />
+                      <Users size={14} className="mr-1 text-blue-600" />
                       {sector.encargado}
                     </div>
                   </div>
@@ -189,7 +189,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
                     </div>
                     <button
                       onClick={() => openEditModal(sector)}
-                      className="text-primary hover:text-primary/80 p-1 rounded hover:bg-gray-100 transition-colors"
+                      className="text-blue-600 hover:text-blue-600/80 p-1 rounded hover:bg-gray-100 transition-colors"
                     >
                       <Edit size={18} />
                     </button>
@@ -202,7 +202,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
-        <h2 className="text-lg font-semibold mb-4 text-primary flex items-center">
+        <h2 className="text-lg font-semibold mb-4 text-blue-600 flex items-center">
           <Users size={20} className="mr-2" />
           Asistentes: {totalAsistentes}
         </h2>
