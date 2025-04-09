@@ -116,19 +116,22 @@ export default function SectorPage() {
   return (
     <main className="container mx-auto px-4 py-8 max-w-md">
       <div className="flex items-center mb-6">
-        <Link href="/" className="mr-3 text-blue-600 hover:text-blue-600/80 transition-colors flex items-center">
+        <Link href="/" className="mr-3 text-gray-600 flex items-center">
           <ArrowLeft size={20} className="mr-1" />
-          <Home size={16} />
+          
         </Link>
         <h1 className="text-2xl font-bold text-gray-800">{sector.nombre}</h1>
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-5 mb-6 border border-gray-100">
         <div className="flex items-center text-gray-600 mb-2">
-          <User size={18} className="mr-2 text-blue-600" />
+          
           <span>Encargado:</span>
         </div>
-        <p className="text-lg font-semibold">{sector.encargado}</p>
+        <div className="flex items-center">
+        <User size={18} className="mr-2 text-gray-600" />
+        <p className="text-lg text-gray-600 font-semibold">{sector.encargado}</p>
+        </div>
       </div>
 
       {!eventDateTime ? (
@@ -137,37 +140,47 @@ export default function SectorPage() {
         </div>
       ) : !eventStarted ? (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
-          <h2 className="text-lg font-semibold mb-4 flex items-center text-blue-600">
+          <h2 className="text-lg font-semibold mb-4 flex items-center text-gray-600">
             <Clock size={20} className="mr-2" />
             Cuenta regresiva
           </h2>
 
           <div className="grid grid-cols-4 gap-3 text-center">
-            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
-              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.days}</div>
+            <div className="bg-gray-600 bg-opacity-10 rounded-lg p-3 border border-gray-600 border-opacity-20">
+              <div className="text-2xl font-bold text-gray-600">{timeRemaining?.days}</div>
               <div className="text-xs text-gray-600">Días</div>
             </div>
-            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
-              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.hours}</div>
+            <div className="bg-gray-600 bg-opacity-10 rounded-lg p-3 border border-gray-600 border-opacity-20">
+              <div className="text-2xl font-bold text-gray-600">{timeRemaining?.hours}</div>
               <div className="text-xs text-gray-600">Horas</div>
             </div>
-            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
-              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.minutes}</div>
+            <div className="bg-gray-600 bg-opacity-10 rounded-lg p-3 border border-gray-600 border-opacity-20">
+              <div className="text-2xl font-bold text-gray-600">{timeRemaining?.minutes}</div>
               <div className="text-xs text-gray-600">Min</div>
             </div>
-            <div className="bg-blue-600 bg-opacity-10 rounded-lg p-3 border border-blue-600 border-opacity-20">
-              <div className="text-2xl font-bold text-blue-600">{timeRemaining?.seconds}</div>
+            <div className="bg-gray-600 bg-opacity-10 rounded-lg p-3 border border-gray-600 border-opacity-20">
+              <div className="text-2xl font-bold text-gray-600">{timeRemaining?.seconds}</div>
               <div className="text-xs text-gray-600">Seg</div>
             </div>
           </div>
 
-          <p className="mt-4 text-center text-gray-500">
-            El conteo se habilitará a las {config?.hora} del {fechaFormateada}
+        <div className="mt-10  text-gray-500">
+
+          <p >
+            El conteo se habilitará 
           </p>
+          <p className="font-bold">
+          {fechaFormateada}
+          </p>
+          <p className="font-bold">
+          {config?.hora}
+          </p>
+        </div>
+      
         </div>
       ) : (
         <div className="bg-white rounded-lg shadow-md p-6 mb-6 border border-gray-100">
-          <h2 className="text-lg font-semibold mb-4 text-blue-600">Registro</h2>
+          
 
           <div className="mb-4">
             <label htmlFor="asistentes" className="block text-sm font-medium text-gray-700 mb-1">
@@ -179,7 +192,7 @@ export default function SectorPage() {
               value={asistentes}
               onChange={(e) => setAsistentes(e.target.value)} // Guardamos el valor como cadena
               min="0"
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none text-gray-600 "
             />
           </div>
 
@@ -193,7 +206,7 @@ export default function SectorPage() {
             ) : (
               <Save size={18} className="mr-2" />
             )}
-            Guardar Asistentes
+            Enviar
           </button>
         </div>
       )}

@@ -12,6 +12,7 @@ export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date())
   const [fechaFormateada, setFechaFormateada] = useState("")
   const [todosSectoresContados, setTodosSectoresContados] = useState(false)
+  const [porcentajeSectoresContados, setPorcentajeSectoresContados] = useState(0)
 
   // First useEffect: Set eventDateTime based on config
   useEffect(() => {
@@ -31,11 +32,16 @@ export default function Home() {
   useEffect(() => {
     if (sectores.length === 0) {
       setTodosSectoresContados(false)
+      setPorcentajeSectoresContados(0)
       return
     }
 
     const todosContados = sectores.every((sector) => sector.asistentes && sector.asistentes > 0)
     setTodosSectoresContados(todosContados)
+
+    const sectoresContados = sectores.filter((sector) => sector.asistentes && sector.asistentes > 0).length
+    const porcentaje = Math.round((sectoresContados / sectores.length) * 100)
+    setPorcentajeSectoresContados(porcentaje)
   }, [sectores])
 
   // Second useEffect: Set up timer to update currentTime
@@ -57,8 +63,7 @@ export default function Home() {
 
   return (
     <main className="container mx-auto px-4 py-8 max-w-md">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">Asistentes</h1>
+      <div className="flex justify-end items-center mb-6">
         <Link
           href="/admin"
           className="bg-white hover:bg-gray-50 text-primary px-4 py-2 rounded-md text-sm font-medium border border-gray-200 shadow-sm flex items-center transition-colors"
@@ -71,13 +76,14 @@ export default function Home() {
       {eventDateTime ? (
         <div className="bg-white text-gray-600 rounded-lg shadow-md p-4 mb-6 border border-gray-100">
           <div className="flex items-center gap-2 text-gray-600 mb-2">
-            <Clock size={18} className="text-primary" />
-            <span>Evento programado para:</span>
+            
+            <span className="leading-3">Programado para:</span>
           </div>
-          <p >
+          <p className="leading-3 mb-3">
             {fechaFormateada}
           </p>
-          <p className="text-xl font-semibold">
+          <p className="text-4xl font-semibold flex items-center gap-2 text-gray-600">
+          <Clock size={18} className="text-primary" />
           {config?.hora}hs
           </p>
         </div>
@@ -91,11 +97,24 @@ export default function Home() {
         className={`rounded-lg shadow-md  p-4 mb-6 border ${todosSectoresContados ? "bg-green-50 border-green-200" : "bg-white  border-gray-600 border-opacity-20"}`}
       >
         <h2
-          className={`text-xl font-semibold mb-2 flex items-center gap-2 ${todosSectoresContados ? "text-green-600" : "text-gray-600"}`}
+          className={` mb-2 flex items-center gap-2 ${todosSectoresContados ? "text-green-600" : "text-gray-600"}`}
         >
-          <Users size={20} />
-          Total de Asistentes: {totalAsistentes}
+          Total de Asistentes:
         </h2>
+        <p className="text-4xl font-semibold flex items-center gap-2 text-gray-600">
+          <Users size={20} />
+          {totalAsistentes}
+        </p>
+
+        <div className="mt-4">
+          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-green-600 transition-all"
+              style={{ width: `${porcentajeSectoresContados}%` }}
+            ></div>
+          </div>
+          
+        </div>
 
         {todosSectoresContados && sectores.length > 0 && (
           <div className="flex items-center text-green-600 mt-2 bg-white p-2 rounded-md">
