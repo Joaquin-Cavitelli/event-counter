@@ -242,8 +242,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
           onClick={handleSendReport}
           className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors"
         >
-          <Users size={18} className="mr-2" />
-          Enviar Reporte por WhatsApp
+          Enviar Reporte
         </button>
       </div>
 
