@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import { format } from "date-fns"
 
 import { useFirebase } from "@/components/firebase-provider"
 import type { Sector } from "@/types"
@@ -67,6 +68,23 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
         setIsResetting(false)
       }
     }
+  }
+
+  const handleSendReport = () => {
+    const fechaHoraConfigurada = config?.fecha && config?.hora 
+      ? `${config.fecha} ${config.hora}hs`
+      : "No configurada"
+
+    const reporteSectores = sectores
+      .map(
+        (sector) =>
+          `- ${sector.nombre} (Encargado: ${sector.encargado || "N/A"}): ${sector.asistentes || 0} asistentes `
+      )
+      .join("\n")
+
+    const mensaje = `Reporte de Asistencia\n\nFecha y Hora Configurada: ${fechaHoraConfigurada}\nTotal de Asistentes: ${totalAsistentes}\n\nDetalle por Sector:\n${reporteSectores}`
+    const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`
+    window.open(url, "_blank")
   }
 
   const openAddModal = () => {
@@ -210,7 +228,7 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
         <button
           onClick={handleResetAll}
           disabled={isResetting}
-          className="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors"
+          className="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors mb-4"
         >
           {isResetting ? (
             <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2"></div>
@@ -218,6 +236,14 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
             <RefreshCw size={18} className="mr-2" />
           )}
           Resetear
+        </button>
+
+        <button
+          onClick={handleSendReport}
+          className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-md flex items-center justify-center transition-colors"
+        >
+          <Users size={18} className="mr-2" />
+          Enviar Reporte por WhatsApp
         </button>
       </div>
 
