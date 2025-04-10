@@ -78,11 +78,11 @@ export function AdminPanel({ onLogout }: AdminPanelProps) {
     const reporteSectores = sectores
       .map(
         (sector) =>
-          `- ${sector.nombre} (Encargado: ${sector.encargado || "N/A"}): ${sector.asistentes || 0} asistentes `
+          `- ${sector.nombre} (${sector.encargado || "N/A"}): ${sector.asistentes || 0} asistentes `
       )
       .join("\n")
 
-    const mensaje = `Reporte de Asistencia\n\nFecha y Hora Configurada: ${fechaHoraConfigurada}\nTotal de Asistentes: ${totalAsistentes}\n\nDetalle por Sector:\n${reporteSectores}`
+    const mensaje = `Reporte de Asistencia\n\n ${fechaHoraConfigurada}\nTotal de Asistentes: ${totalAsistentes}\n\nDetalle por Sector:\n${reporteSectores}`
     const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`
     window.open(url, "_blank")
   }
